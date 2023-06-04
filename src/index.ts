@@ -22,7 +22,8 @@ const loadBackgroundImages = () => {
 }
 
 const backgroundImages = loadBackgroundImages();
-const backgroundLayers = backgroundImages.map(backgroundImage => (new BackgroundLayer(backgroundImage, ctx, gameSpeed, 1)))
+const backgroundLayers = backgroundImages.map((backgroundImage, idx) => 
+(new BackgroundLayer(backgroundImage, ctx, gameSpeed, idx === backgroundImages.length - 1 ? 1 : 0.5)))
 
 let x = 0;
 function animate() {
