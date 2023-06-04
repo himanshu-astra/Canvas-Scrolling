@@ -22,3 +22,8 @@ class BackgroundLayer {
 }
 
 export default BackgroundLayer
+
+
+// This works by keeping same images stacked, ---Image---|---Image---
+// X captures a slice of this image, and as x moves and reaches end, the second image gets shown,
+// as soon as the block of second image is shown, we move back to the first image
