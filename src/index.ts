@@ -8,9 +8,9 @@ const speedElement = document.querySelector("p") as HTMLParagraphElement
 
 export let gameSpeed = 5
 
-slider.addEventListener("input", (e: any) => {
+slider.addEventListener("input", (e: Event) => {
     if(e === null || e.target === null) return
-    gameSpeed = e.target.value
+    gameSpeed = parseInt((e.target as HTMLInputElement).value)
     speedElement.innerHTML = `Game Speed: ${gameSpeed}`
 })
 
