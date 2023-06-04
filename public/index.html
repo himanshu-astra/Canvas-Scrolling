@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="static/css/style.css" /> 
 </head>
 <body>
-    <canvas id="canvas"></canvas>
+    <div class="canvas-slider">
+        <canvas id="canvas"></canvas>
+        <footer>
+            <p>Game Speed: 10</p>
+            <input type="range" min="0" max="20" id="slider" value="5" />
+        </footer>
+    </div>
     <script src="static/bundle/script.js"></script>
 </body>
 </html>

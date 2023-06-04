@@ -1,14 +1,24 @@
 import BackgroundLayer from "./BackgroundLayer"
+
 const canvas =  document.getElementById("canvas") as HTMLCanvasElement
 const ctx = canvas.getContext("2d") as CanvasRenderingContext2D 
+const slider = document.getElementById("slider") as HTMLInputElement
+const speedElement = document.querySelector("p") as HTMLParagraphElement
+
+
+export let gameSpeed = 5
+
+slider.addEventListener("input", (e: any) => {
+    if(e === null || e.target === null) return
+    gameSpeed = e.target.value
+    speedElement.innerHTML = `Game Speed: ${gameSpeed}`
+})
 
 const CANVAS_WIDTH = 600
 const CANVAS_HEIGHT = 700
 
 canvas.width = CANVAS_WIDTH
 canvas.height = CANVAS_HEIGHT
-
-let gameSpeed = 5
 
 const BACKGROUND_IMAGES = 5
 const loadBackgroundImages = () => {
@@ -23,9 +33,8 @@ const loadBackgroundImages = () => {
 
 const backgroundImages = loadBackgroundImages();
 const backgroundLayers = backgroundImages.map((backgroundImage, idx) => 
-(new BackgroundLayer(backgroundImage, ctx, gameSpeed, idx === backgroundImages.length - 1 ? 1 : 0.5)))
+(new BackgroundLayer(backgroundImage, ctx, idx === backgroundImages.length - 1 ? 1 : 0.5)))
 
-let x = 0;
 function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
     backgroundLayers.forEach(layer => {
